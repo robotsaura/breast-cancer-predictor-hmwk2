@@ -23,19 +23,26 @@ jobs:
         python -m venv venv
         source venv/bin/activate
         pip install -r requirements.txt
+
     - name: Install Heroku CLI
       run: |
-        curl https://cli-assets.heroku.com/install.sh | sh	 
+        curl https://cli-assets.heroku.com/install.sh | sh
+
+    - name: Authenticate Heroku
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: |
+        echo "machine api.heroku.com login ${{ secrets.HEROKU_API_KEY }}" > ~/.netrc
+        echo "machine git.heroku.com login ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
+        heroku auth:token
+
     - name: Deploy to Heroku
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       run: |
-        echo "machine api.heroku.com" >> ~/.netrc
-        echo "  login ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
-        echo "machine git.heroku.com" >> ~/.netrc
-        echo "  login ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
-        heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
+        git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME 
+}}.git
         git push https://heroku:$HEROKU_API_KEY@git.heroku.com/${{ 
 secrets.HEROKU_APP_NAME }}.git HEAD:main
 
