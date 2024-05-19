@@ -45,7 +45,7 @@
       "  File \"/Users/robotsaura/anaconda3/lib/python3.11/site-packages/jupyter_core/paths.py\", line 19, in <module>\n",
       "    from pathlib import Path\n",
       "  File \"/Users/robotsaura/anaconda3/lib/python3.11/site-packages/pathlib.py\", line 10, in <module>\n",
-      "    from collections import Sequence\n",
+      "    from collections.abc import Sequence\n",
       "ImportError: cannot import name 'Sequence' from 'collections' (/Users/robotsaura/anaconda3/lib/python3.11/collections/__init__.py)\n"
      ]
     },
@@ -101,7 +101,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 0,
+   "execution_count": null,
    "id": "cc8c4098",
    "metadata": {},
    "outputs": [],
