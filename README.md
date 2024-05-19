@@ -32,7 +32,7 @@ I utilized ChatGPT to assist with writing and debugging the code, ensuring the a
 During the development process, I encountered several challenges:
 - The `.yml` file for GitHub Actions often started new lines for long code lines, causing the workflow to fail. This required multiple attempts to correct.
 - Initial deployment issues on Heroku were resolved by reading the logs and identifying formatting issues in the `app.py` file.
-- I had to manually adjust the class labels from `benign = 2` and `malignant = 4` to `0` and `1`, respectively, in the `app.py` file without retraining the model.
+- I had to manually adjust the class labels from `benign = 0` and `malignant = 1` to `2` and `4`, respectively, in the `app.py` file without retraining the model.
 
 ## References
 Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(original)]. Irvine, CA: University of California, School of Information and Computer Science.
