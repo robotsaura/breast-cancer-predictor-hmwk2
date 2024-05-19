@@ -30,7 +30,7 @@ def predict():
     prediction = model.predict(features)[0]
     
     # Display the prediction result
-    result = "Benign" if prediction == 0 else "Malignant"
+    result = "Benign" if prediction == 2 else "Malignant"
     
     return f"The predicted tumor type is: {result}"
 
