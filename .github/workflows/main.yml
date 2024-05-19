@@ -27,11 +27,12 @@ jobs:
     - name: Install Heroku CLI
       run: |
         curl https://cli-assets.heroku.com/install.sh | sh
+        heroku --version
 
     - name: Verify Secrets
       run: |
-        echo $HEROKU_API_KEY | wc -c
-        echo $HEROKU_APP_NAME | wc -c
+        echo "HEROKU_API_KEY is set with length: ${#HEROKU_API_KEY}"
+        echo "HEROKU_APP_NAME is set with length: ${#HEROKU_APP_NAME}"
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
