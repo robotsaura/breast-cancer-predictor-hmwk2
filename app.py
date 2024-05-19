@@ -71,7 +71,7 @@
     "\n",
     "@app.route(\"/\")\n",
     "def index():\n",
-    "    return render_template(\"index.html\")\n",
+    "    return render_template_string(index_html)\n",
     "\n",
     "@app.route(\"/predict\", methods=[\"POST\"])\n",
     "def predict():\n",
@@ -96,13 +96,13 @@
     "    return f\"The predicted tumor type is: {result}\"\n",
     "\n",
     "if __name__ == \"__main__\":\n",
-    "    app.run(debug=True)\n"
+    "    app.run(debug=True, use_reloader=False)\n"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "0c1fad1b",
+   "id": "cc8c4098",
    "metadata": {},
    "outputs": [],
    "source": []
