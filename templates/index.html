@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+</head>
+<body>
+    <h1>Breast Cancer Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="clump">Clump Thickness:</label>
+        <input type="text" id="clump" name="clump"><br><br>
+
+        <label for="cellSize">Cell Size Uniformity:</label>
+        <input type="text" id="cellSize" name="cellSize"><br><br>
+
+        <label for="cellShape">Cell Shape Uniformity:</label>
+        <input type="text" id="cellShape" name="cellShape"><br><br>
+
+        <label for="ad">Marginal Adhesion:</label>
+        <input type="text" id="ad" name="ad"><br><br>
+
+        <label for="sCellSize">Single Epithelial Cell Size:</label>
+        <input type="text" id="sCellSize" name="sCellSize"><br><br>
+
+        <label for="nuclei">Bare Nuclei:</label>
+        <input type="text" id="nuclei" name="nuclei"><br><br>
+
+        <label for="chromatin">Bland Chromatin:</label>
+        <input type="text" id="chromatin" name="chromatin"><br><br>
+
+        <label for="nNuc">Normal Nucleoli:</label>
+        <input type="text" id="nNuc" name="nNuc"><br><br>
+
+        <label for="mitosis">Mitoses:</label>
+        <input type="text" id="mitosis" name="mitosis"><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
+
