@@ -27,32 +27,26 @@ jobs:
     - name: Install Heroku CLI
       run: |
         curl https://cli-assets.heroku.com/install.sh | sh
-        heroku --version
 
-    - name: Verify Secrets
+    - name: Verify Heroku CLI Installation
+      run: heroku --version
+
+    - name: Authenticate Heroku
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
-        echo "HEROKU_API_KEY is set with length: ${#HEROKU_API_KEY}"
-        echo "HEROKU_APP_NAME is set with length: ${#HEROKU_APP_NAME}"
+        echo "machine api.heroku.com" > ~/.netrc
+        echo "  login $HEROKU_API_KEY" >> ~/.netrc
+        echo "machine git.heroku.com" >> ~/.netrc
+        echo "  login $HEROKU_API_KEY" >> ~/.netrc
+        heroku auth:token
+
+    - name: Deploy to Heroku
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-
-    - name: Authenticate Heroku
-      run: |
-        echo "machine api.heroku.com" > ~/.netrc
-        echo "  login ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
-        echo "machine git.heroku.com" >> ~/.netrc
-        echo "  login ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
-        heroku auth:token
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-
-    - name: Deploy to Heroku
       run: |
         git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME 
 }}.git
         git push heroku HEAD:main
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
