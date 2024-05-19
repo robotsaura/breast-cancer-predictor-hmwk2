@@ -9,7 +9,8 @@ with open("nb_model.pkl", "rb") as file:
 
 @app.route("/")
 def index():
-    return render_template_string(index_html)
+    return render_template("index.html")
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
