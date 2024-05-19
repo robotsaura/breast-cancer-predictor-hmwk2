@@ -50,6 +50,5 @@ jobs:
         echo "Setting Heroku remote..."
         heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
         echo "Pushing to Heroku..."
-        git push https://heroku:$HEROKU_API_KEY@git.heroku.com/${{ 
-secrets.HEROKU_APP_NAME }}.git HEAD:main
+        git push https://heroku:$HEROKU_API_KEY@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git HEAD:main
 
